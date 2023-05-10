@@ -22,4 +22,27 @@ $(document).ready(function() {
             }
         });
     })
+
+    //Update admin status
+    $(document).on("click", ".updateAdminstatus", function() {
+        var status = $(this).children("i").attr("status");
+        var admin_id = $(this).attr("admin_id");
+        $.ajax({
+            type: "post",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "/admin/update-admin-status",
+            data: { status: status, admin_id: admin_id },
+            success: function() {
+                if(resp["status"] == 0) {
+                    $("#admin-"+admin_id).html("<i style='font-size: 25px;' class='mdi mdi-bookmark-outline' status='Inactive'></i>")
+                } else if(resp["status"] == 1) {
+                    $("#admin-"+admin_id).html("<i style='font-size: 25px;' class='mdi mdi-bookmark-check' status='Active'></i>")
+                }
+            }, error: function() {
+                alert("Error")
+            }
+        })
+    })
 });
