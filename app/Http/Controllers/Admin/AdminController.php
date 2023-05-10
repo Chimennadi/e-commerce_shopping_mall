@@ -11,14 +11,17 @@ use App\Models\Admin;
 use App\Models\Vendor;
 use App\Models\VendorsBusinessDetail;
 use App\Models\VendorsBankDetail;
+use Session;
 
 class AdminController extends Controller
 {
     public function dashboard() {
+        Session::put("page", "dashboard");
         return view("admin.dashboard");
     }
 
     public function updateAdminPassword(Request $request) {
+        Session::put("page", "update_admin_password");
         if($request->isMethod("post")) {
             $data = $request->all();
             // Check if current password entered by admin is correct
@@ -49,6 +52,7 @@ class AdminController extends Controller
     }
 
     public function updateAdminDetails(Request $request) {
+        Session::put("page", "update_admin_details");
         if($request->isMethod("post")) {
             $data = $request->all();
             //Validation
@@ -85,6 +89,7 @@ class AdminController extends Controller
     public function updateVendorDetails($slug, Request $request) {
         if($slug == "personal") {
             if($request->isMethod("post")) {
+                Session::put("page", "update_personal_details");
                 $data = $request->all();
                 /* echo "<pre>"; print_r($data); die; */
                 //Validation
@@ -129,6 +134,7 @@ class AdminController extends Controller
             $vendorDetails = Vendor::where("id", Auth::guard("admin")->user()->vendor_id)->first()->toArray();
         } else if($slug == "business") {
             if($request->isMethod("post")) {
+                Session::put("page", "update_business_details");
                 $data = $request->all();
                 //Validation
                 $rules = [
@@ -177,6 +183,7 @@ class AdminController extends Controller
             $vendorDetails = VendorsBusinessDetail::where("vendor_id", Auth::guard("admin")->user()->vendor_id)->first()->toArray();
         } else if($slug == "bank") {
             if($request->isMethod("post")) {
+                Session::put("page", "update_bank_details");
                 $data = $request->all();
                 //Validation
                 $rules = [
@@ -229,8 +236,10 @@ class AdminController extends Controller
         if(!empty($type)) {
             $admins = $admins->where("type", $type);
             $title = ucfirst($type)."s";
+        Session::put("page", "view_".strtolower($title));
         } else {
             $title = "All Admins/Subadmins/Vendors";
+            Session::put("page", "view_all");
         }
         $admins = $admins->get()->toArray();
         //dd($admins);
