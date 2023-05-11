@@ -11,6 +11,7 @@ use App\Models\Admin;
 use App\Models\Vendor;
 use App\Models\VendorsBusinessDetail;
 use App\Models\VendorsBankDetail;
+use App\Models\Country;
 use Session;
 
 class AdminController extends Controller
@@ -96,7 +97,6 @@ class AdminController extends Controller
                 $rules = [
                     "vendor_name" => "required|regex:/^[\pL\s\-]+$/u",
                     "vendor_state" => "required|regex:/^[\pL\s\-]+$/u",
-                    "vendor_country" => "required|regex:/^[\pL\s\-]+$/u",
                     "vendor_mobile" => "required|numeric",
                 ];
                 $this->validate($request, $rules);
@@ -140,7 +140,6 @@ class AdminController extends Controller
                 $rules = [
                     "shop_name" => "required|regex:/^[\pL\s\-]+$/u",
                     "shop_state" => "required|regex:/^[\pL\s\-]+$/u",
-                    "shop_country" => "required|regex:/^[\pL\s\-]+$/u",
                     "shop_mobile" => "required|numeric",
                     "address_proof" => "required",
                 ];
@@ -205,7 +204,8 @@ class AdminController extends Controller
             }
             $vendorDetails = VendorsBankDetail::where("vendor_id", Auth::guard("admin")->user()->vendor_id)->first()->toArray();
         }
-        return view("admin.settings.update_vendor_details")->with(compact("slug", "vendorDetails"));
+        $countries = Country::where("status", 1)->get()->toArray();
+        return view("admin.settings.update_vendor_details")->with(compact("slug", "vendorDetails", "countries"));
     }
 
     public function login(Request $request) {

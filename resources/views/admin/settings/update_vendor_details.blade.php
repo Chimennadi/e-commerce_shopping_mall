@@ -89,7 +89,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="vendor_country">Country</label>
-                                    <input type="text" class="form-control" id="vendor_country" placeholder="Enter Country" name="vendor_country" value="{{ $vendorDetails["country"] }}" required="">
+                                    {{-- <input type="text" class="form-control" id="vendor_country" placeholder="Enter Country" name="vendor_country" value="{{ $vendorDetails["country"] }}" required=""> --}}
+                                    <select name="vendor_country" id="vendor_country" class="form-control" style="color: #495057;">
+                                        <option value="">Select Country</option>
+                                        @foreach($countries as $country)
+                                        <option value="{{ $country['country_name'] }}" @if($country['country_name'] == $vendorDetails['country']) selected @endif>{{ $country['country_name'] }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="vendor_pincode">Pincode</label>
@@ -177,7 +183,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="shop_country">Shop Country</label>
-                                        <input type="text" class="form-control" id="shop_country" placeholder="Enter Shop Country" name="shop_country" value="{{ $vendorDetails["shop_country"] }}" required="">
+                                        {{-- <input type="text" class="form-control" id="shop_country" placeholder="Enter Shop Country" name="shop_country" value="{{ $vendorDetails["shop_country"] }}" required=""> --}}
+                                        <select name="shop_country" id="shop_country" class="form-control" style="color: #495057;">
+                                            <option value="">Select Country</option>
+                                            @foreach($countries as $country)
+                                            <option value="{{ $country['country_name'] }}" @if($country['country_name'] == $vendorDetails['shop_country']) selected @endif>{{ $country['country_name'] }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="shop_pincode">Shop Pincode</label>
