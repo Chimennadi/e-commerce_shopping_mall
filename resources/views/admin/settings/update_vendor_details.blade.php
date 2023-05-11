@@ -286,11 +286,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="bank_name">Bank Name</label>
-                                    <input type="text" class="form-control" id="bank_name" placeholder="Enter Bank Name" name="bank_name" value="{{ $vendorDetails["bank_name"] }}" required="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="bank_name">Bank Name</label>
-                                    <select name="bank_name" id="bank_name" class="form-control">
+                                    <select name="bank_name" id="bank_name" class="form-control" style="color: #495057;">
                                         <option value="Access Bank" @if($vendorDetails["bank_name"] == "Access Bank") selected @endif>Access Bank</option>
                                         <option value="FCMB" @if($vendorDetails["bank_name"] == "FCMB") selected @endif>FCMB</option>
                                         <option value="FirstMonie Wallet" @if($vendorDetails["bank_name"] == "FirstMonie Wallet") selected @endif>FirstMonie Wallet</option>
