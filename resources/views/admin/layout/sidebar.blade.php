@@ -36,7 +36,7 @@
             </div>
         </li>
         <li class="nav-item">
-            <a @if(Session::get('page') == 'view_admins' || Session::get('page') == 'view_submins' || Session::get('page') == 'view_vendors' || Session::get('page') == 'view_all') style="background:#4B49AC !important; color: #fff !important;" @endif class="nav-link" data-toggle="collapse" href="#ui-admins" aria-expanded="false" aria-controls="ui-admins">
+            <a @if(Session::get('page') == 'view_admins' || Session::get('page') == 'view_subadmins' || Session::get('page') == 'view_vendors' || Session::get('page') == 'view_all') style="background:#4B49AC !important; color: #fff !important;" @endif class="nav-link" data-toggle="collapse" href="#ui-admins" aria-expanded="false" aria-controls="ui-admins">
             <i class="icon-layout menu-icon"></i>
             <span class="menu-title">Admin Management</span>
             <i class="menu-arrow"></i>
