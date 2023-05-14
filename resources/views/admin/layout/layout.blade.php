@@ -64,5 +64,8 @@
         <!-- Custom Admin JS -->
         <script src="{{ url('admin/js/custom.js') }}"></script>
         <!-- End Custom Admin JS -->
+        <!-- Sweetalert -->
+        <script src="{{ url('https://cdn.jsdelivr.net/npm/sweetalert2@11') }}"></script>
+        <!-- End of sweetalert -->
     </body>
 </html>
