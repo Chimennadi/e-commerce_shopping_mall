@@ -75,16 +75,6 @@ $(document).ready(function() {
         })
     });
 
-    //Confirm deletion (simple Javascript)
-    // $(".confirmDelete").click(function() {
-    //     var title = $(this).attr("title");
-    //     if(confirm("Are you sure to delete this " + title + "?")) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // });
-
     //Confirm deletion (SweetAlert Library)
     $(".confirmDelete").click(function() {
         var module = $(this).attr("module");
