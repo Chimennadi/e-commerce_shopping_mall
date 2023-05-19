@@ -12,7 +12,7 @@
                         {{-- <p class="card-description">
                             Add class <code>.table-bordered</code>
                         </p> --}}
-                        <a style="max-width: 150px; float: right; display: inline-block;" href="{{ url('admin/categories') }}" class="btn btn-block btn-primary">Add Category</a>
+                        <a style="max-width: 150px; float: right; display: inline-block;" href="{{ url('admin/add-edit-category') }}" class="btn btn-block btn-primary">Add Category</a>
                         <!-- Success Message -->
                         @if(Session::has("success_message"))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">

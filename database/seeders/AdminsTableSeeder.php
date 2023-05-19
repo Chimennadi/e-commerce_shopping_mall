@@ -19,7 +19,7 @@ class AdminsTableSeeder extends Seeder
                 "name" => "Nnadi", 
                 "type" => "vendor", 
                 "vendor_id" => 1, 
-                "mobile" => "+2347032281281", 
+                "mobile" => "+2347060869085", 
                 "email" => "nnadi@admin.com", 
                 "password" => "$2a$12$9r8Uw1J7H4JD0qxV8aprAO1nsJCzNu3oqgx9qXr2WpXDZdlEMfKeq",
                 "image" => "",

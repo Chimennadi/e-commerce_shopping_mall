@@ -72,7 +72,7 @@ Route::prefix("/admin")->namespace("App\Http\Controllers\Admin")->group(function
         Route::get("delete-section/{id}", "SectionController@deleteSection");
 
         //Edit section
-        Route::match(["get", "post"], "add-edit-section/{id?}", "sectionController@addEditSection");
+        Route::match(["get", "post"], "add-edit-section/{id?}", "SectionController@addEditSection");
 
         //Categories
         Route::get("categories", "CategoryController@categories");
