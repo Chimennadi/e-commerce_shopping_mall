@@ -30,7 +30,16 @@
                                             ID
                                         </th>
                                         <th>
-                                            Name
+                                            Category
+                                        </th>
+                                        <th>
+                                            Parent Category
+                                        </th>
+                                        <th>
+                                            Section
+                                        </th>
+                                        <th>
+                                            URL
                                         </th>
                                         <th>
                                             Status
@@ -42,12 +51,26 @@
                                 </thead>
                                 <tbody>
                                     @foreach ( $categories as $category )
+                                    @if(isset($category["parent_category"]["category_name"]) && !empty($category["parent_category"]["category_name"]))
+                                        <?php $parent_category = $category["parent_category"]["category_name"]; ?>
+                                    @else 
+                                        <?php $parent_category = "Root"; ?>
+                                    @endif
                                     <tr>
                                         <td>
                                             {{ $category["id"] }}
                                         </td>
                                         <td>
                                             {{ $category["category_name"] }}
+                                        </td>
+                                        <td>
+                                            {{ $parent_category }}
+                                        </td>
+                                        <td>
+                                            {{ $category["section"]["name"] }}
+                                        </td>
+                                        <td>
+                                            {{ $category["url"] }}
                                         </td>
                                         <td>
                                             @if ($category["status"] == 1)

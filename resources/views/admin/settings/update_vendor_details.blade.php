@@ -90,7 +90,7 @@
                                 <div class="form-group">
                                     <label for="vendor_country">Country</label>
                                     {{-- <input type="text" class="form-control" id="vendor_country" placeholder="Enter Country" name="vendor_country" value="{{ $vendorDetails["country"] }}" required=""> --}}
-                                    <select name="vendor_country" id="vendor_country" class="form-control" style="color: #495057;">
+                                    <select name="vendor_country" id="vendor_country" class="form-control" style="color: #495057;" required="">
                                         <option value="">Select Country</option>
                                         @foreach($countries as $country)
                                         <option value="{{ $country['country_name'] }}" @if($country['country_name'] == $vendorDetails['country']) selected @endif>{{ $country['country_name'] }}</option>

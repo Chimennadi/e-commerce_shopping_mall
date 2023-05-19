@@ -17,7 +17,7 @@ class VendorsBankDetailsTableSeeder extends Seeder
             [
                 "id" => 1, 
                 "vendor_id" => 1, 
-                "account_holder_name" => "Chime", 
+                "account_holder_name" => "Nnadi", 
                 "bank_name" => "GTBank", 
                 "account_number" => "0613743801", 
                 "bank_bin_code" => "061374",

@@ -76,6 +76,12 @@ Route::prefix("/admin")->namespace("App\Http\Controllers\Admin")->group(function
 
         //Categories
         Route::get("categories", "CategoryController@categories");
+
+        //Update Categories Status
+        Route::post("update-category-status", "CategoryController@updateCategoryStatus");
+
+        //Edit category
+        Route::match(["get", "post"], "add-edit-category/{id?}", "CategoryController@addEditCategory");
     });
 });
 

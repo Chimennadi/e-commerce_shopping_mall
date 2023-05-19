@@ -17,7 +17,7 @@ class VendorsTableSeeder extends Seeder
         $vendorRecords = [
             [
                 "id" => 1, 
-                "name" => "Chime", 
+                "name" => "Nnadi", 
                 "address" => "CP-112", 
                 "city" => "Ikeja", 
                 "state" => "Lagos State", 
@@ -25,7 +25,7 @@ class VendorsTableSeeder extends Seeder
                 "pincode" => "112002", 
                 "mobile" => "+2349033688922", 
                 "email" => "nnadi@admin.com",
-                "status" => 0
+                "status" => 1
                 ]
         ];
         Vendor::insert($vendorRecords);
