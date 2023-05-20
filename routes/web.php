@@ -64,24 +64,24 @@ Route::prefix("/admin")->namespace("App\Http\Controllers\Admin")->group(function
 
         //Sections
         Route::get("sections", "SectionController@sections");
-
-        //Update Admin Status
         Route::post("update-section-status", "SectionController@updateSectionStatus");
-
-        //Delete section
         Route::get("delete-section/{id}", "SectionController@deleteSection");
-
-        //Edit section
         Route::match(["get", "post"], "add-edit-section/{id?}", "SectionController@addEditSection");
+
+        //Brands
+        Route::get("brands", "BrandController@brands");
+        Route::post("update-brand-status", "BrandController@updateBrandStatus");
+        Route::get("delete-brand/{id}", "BrandController@deleteBrand");
+        Route::match(["get", "post"], "add-edit-brand/{id?}", "BrandController@addEditBrand");
 
         //Categories
         Route::get("categories", "CategoryController@categories");
-
-        //Update Categories Status
         Route::post("update-category-status", "CategoryController@updateCategoryStatus");
-
-        //Edit category
         Route::match(["get", "post"], "add-edit-category/{id?}", "CategoryController@addEditCategory");
+        Route::get("append-categories-level", "CategoryController@appendCategoryLevel");
+        Route::get("delete-category/{id}", "CategoryController@deleteCategory");
+        //Deleting images from folder and from database table
+        Route::get("delete-category-image/{id}", "CategoryController@deleteCategoryImage");
     });
 });
 

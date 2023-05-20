@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Section;
 use Session;
 
-class SectionController extends Controller
-{
+class SectionController extends Controller {
     public function sections() {
         Session::put("page", "sections");
         $sections = Section::get()->toArray();
