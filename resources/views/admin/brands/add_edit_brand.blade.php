@@ -7,7 +7,7 @@
             <div class="col-md-12 grid-margin">
                 <div class="row">
                     <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                        <h3 class="font-weight-bold">Sections</h3>
+                        <h3 class="font-weight-bold">Brands</h3>
                         <!-- <h6 class="font-weight-normal mb-0">Update Admin Password</h6> -->
                     </div>
                     <div class="col-12 col-xl-4">
@@ -65,10 +65,10 @@
                         </div>
                         @endif
                         <!-- end server side validation -->
-                        <form class="forms-sample" @if(empty($section['id'])) action="{{ url('admin/add-edit-section') }}" @else action="{{ url('admin/add-edit-section/'.$section['id']) }}" @endif method="post" enctype="multipart/form-data">@csrf
+                        <form class="forms-sample" @if(empty($brand['id'])) action="{{ url('admin/add-edit-brand') }}" @else action="{{ url('admin/add-edit-brand/'.$brand['id']) }}" @endif method="post" enctype="multipart/form-data">@csrf
                             <div class="form-group">
-                                <label for="section_name">Section Name</label>
-                                <input type="text" class="form-control" id="section_name" placeholder="Enter Section Name" name="section_name"  @if(!empty($section['name'])) value="{{ $section['name']}}" @else value="{{ old('section_name') }}" @endif required="">
+                                <label for="brand_name">Brand Name</label>
+                                <input type="text" class="form-control" id="brand_name" placeholder="Enter brand Name" name="brand_name"  @if(!empty($brand['name'])) value="{{ $brand['name']}}" @else value="{{ old('brand_name') }}" @endif required="">
                             </div>
                             <div class="form-group" style="margin-top: 20px">
                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
