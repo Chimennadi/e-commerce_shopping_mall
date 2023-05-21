@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2023 at 05:34 PM
+-- Generation Time: May 21, 2023 at 11:04 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -332,13 +332,14 @@ CREATE TABLE `brands` (
 --
 
 INSERT INTO `brands` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Arrow', 1, NULL, NULL),
+(1, 'Arrow', 1, NULL, '2023-05-21 06:15:25'),
 (2, 'Gap', 1, NULL, NULL),
-(3, 'Lee', 1, NULL, NULL),
+(3, 'Huawei', 1, NULL, '2023-05-21 06:12:30'),
 (4, 'Samsung', 1, NULL, NULL),
-(5, 'LG', 1, NULL, NULL),
-(6, 'Lenovo', 1, NULL, NULL),
-(7, 'Apple', 1, NULL, NULL);
+(5, 'LG', 1, NULL, '2023-05-21 06:09:30'),
+(6, 'Lenovo', 1, NULL, '2023-05-21 06:09:32'),
+(7, 'MI', 1, NULL, '2023-05-21 06:49:54'),
+(9, 'Others', 1, '2023-05-21 06:14:42', '2023-05-21 06:14:42');
 
 -- --------------------------------------------------------
 
@@ -686,7 +687,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (28, '2023_05_04_204819_create_vendors_bank_details', 1),
 (29, '2023_05_11_173711_create_sections_table', 1),
 (30, '2023_05_14_023205_create_categories_table', 1),
-(31, '2023_05_20_150721_create_brands_table', 2);
+(31, '2023_05_20_150721_create_brands_table', 2),
+(32, '2023_05_21_072301_create_products_table', 3),
+(33, '2023_05_21_073504_create_products_table', 4);
 
 -- --------------------------------------------------------
 
@@ -718,6 +721,46 @@ CREATE TABLE `personal_access_tokens` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `section_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `brand_id` int(11) NOT NULL,
+  `vendor_id` int(11) NOT NULL,
+  `admin_id` int(11) NOT NULL,
+  `admin_type` varchar(255) NOT NULL,
+  `product_name` varchar(255) NOT NULL,
+  `product_code` varchar(255) NOT NULL,
+  `product_color` varchar(255) NOT NULL,
+  `product_price` varchar(255) NOT NULL,
+  `product_discount` int(11) NOT NULL,
+  `product_weight` varchar(255) NOT NULL,
+  `product_image` varchar(255) NOT NULL,
+  `product_video` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `meta_title` varchar(255) NOT NULL,
+  `meta_description` varchar(255) NOT NULL,
+  `meta_keywords` varchar(255) NOT NULL,
+  `is_featured` enum('No','Yes') DEFAULT NULL,
+  `status` tinyint(4) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `section_id`, `category_id`, `brand_id`, `vendor_id`, `admin_id`, `admin_type`, `product_name`, `product_code`, `product_color`, `product_price`, `product_discount`, `product_weight`, `product_image`, `product_video`, `description`, `meta_title`, `meta_description`, `meta_keywords`, `is_featured`, `status`, `created_at`, `updated_at`) VALUES
+(1, 2, 5, 7, 1, 2, 'vendor', 'Redmi Note 11', 'RN11', 'Blue', '15000', 10, '500', '', '', NULL, '', '', '', 'Yes', 1, NULL, NULL),
+(2, 1, 6, 2, 0, 1, 'superadmin', 'Red Casual T-Shirt', 'RC001', 'Red', '1000', 20, '200', '', '', NULL, '', '', '', 'Yes', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -908,6 +951,12 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sections`
 --
 ALTER TABLE `sections`
@@ -959,7 +1008,7 @@ ALTER TABLE `apps_countries`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -983,13 +1032,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `sections`
