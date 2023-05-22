@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2023 at 11:04 AM
+-- Generation Time: May 22, 2023 at 09:08 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -46,7 +46,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `type`, `vendor_id`, `mobile`, `email`, `password`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin', 0, '+2347032281281', 'admin@admin.com', '$2a$12$9r8Uw1J7H4JD0qxV8aprAO1nsJCzNu3oqgx9qXr2WpXDZdlEMfKeq', '', 1, NULL, NULL),
+(1, 'Admin', 'superadmin', 0, '+2347032281281', 'admin@admin.com', '$2a$12$9r8Uw1J7H4JD0qxV8aprAO1nsJCzNu3oqgx9qXr2WpXDZdlEMfKeq', '', 1, NULL, NULL),
 (2, 'Nnadi', 'vendor', 1, '+2347060869085', 'nnadi@admin.com', '$2a$12$9r8Uw1J7H4JD0qxV8aprAO1nsJCzNu3oqgx9qXr2WpXDZdlEMfKeq', '', 1, NULL, '2023-05-20 13:06:27');
 
 -- --------------------------------------------------------
@@ -374,9 +374,10 @@ INSERT INTO `categories` (`id`, `parent_id`, `section_id`, `category_name`, `cat
 (5, 0, 2, 'Mobiles', '', 10.00, 'This is a mobile category', 'mobiles', 'mobiles', 'mobiles', 'mobiles', 1, '2023-05-19 16:37:06', '2023-05-19 16:37:06'),
 (6, 0, 3, 'Cooking gas', '', 5.00, 'This is a kitchen appliances', 'Kitchen', 'kitchen', 'kitchen', 'kitchen', 1, '2023-05-19 16:39:49', '2023-05-19 16:39:49'),
 (7, 5, 2, 'Smartphones', '', 10.00, NULL, 'smartphones', 'smartphones', 'smartphones', 'smartphones', 1, '2023-05-20 12:19:58', '2023-05-20 13:58:16'),
-(8, 1, 1, 'T-Shirts', '', 0.00, 'Men\'s wear', 'tshirts', 'tshirts', 'tshirts', 'tshirts', 1, '2023-05-20 12:48:00', '2023-05-20 12:48:00'),
+(8, 11, 1, 'T-Shirts', '', 0.00, NULL, 'tshirts', 'tshirts', 'tshirts', 'tshirts', 1, '2023-05-20 12:48:00', '2023-05-22 10:30:28'),
 (9, 1, 1, 'Shirts', '', 0.00, NULL, 'shirts', 'shirts', 'shirts', 'shirts', 1, '2023-05-20 13:01:56', '2023-05-20 13:07:53'),
-(10, 2, 1, 'Denims', '', 0.00, NULL, 'denims', NULL, NULL, NULL, 1, '2023-05-20 13:12:56', '2023-05-20 13:15:11');
+(10, 2, 1, 'Denims', '', 0.00, NULL, 'denims', NULL, NULL, NULL, 1, '2023-05-20 13:12:56', '2023-05-20 13:15:11'),
+(11, 0, 1, 'Men', '', 0.00, NULL, 'men', NULL, NULL, NULL, 1, '2023-05-22 09:46:31', '2023-05-22 09:46:31');
 
 -- --------------------------------------------------------
 
@@ -742,12 +743,12 @@ CREATE TABLE `products` (
   `product_price` varchar(255) NOT NULL,
   `product_discount` int(11) NOT NULL,
   `product_weight` varchar(255) NOT NULL,
-  `product_image` varchar(255) NOT NULL,
-  `product_video` varchar(255) NOT NULL,
+  `product_image` varchar(255) DEFAULT NULL,
+  `product_video` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `meta_title` varchar(255) NOT NULL,
-  `meta_description` varchar(255) NOT NULL,
-  `meta_keywords` varchar(255) NOT NULL,
+  `meta_title` varchar(255) DEFAULT NULL,
+  `meta_description` varchar(255) DEFAULT NULL,
+  `meta_keywords` varchar(255) DEFAULT NULL,
   `is_featured` enum('No','Yes') DEFAULT NULL,
   `status` tinyint(4) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -760,7 +761,8 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `section_id`, `category_id`, `brand_id`, `vendor_id`, `admin_id`, `admin_type`, `product_name`, `product_code`, `product_color`, `product_price`, `product_discount`, `product_weight`, `product_image`, `product_video`, `description`, `meta_title`, `meta_description`, `meta_keywords`, `is_featured`, `status`, `created_at`, `updated_at`) VALUES
 (1, 2, 5, 7, 1, 2, 'vendor', 'Redmi Note 11', 'RN11', 'Blue', '15000', 10, '500', '', '', NULL, '', '', '', 'Yes', 1, NULL, NULL),
-(2, 1, 6, 2, 0, 1, 'superadmin', 'Red Casual T-Shirt', 'RC001', 'Red', '1000', 20, '200', '', '', NULL, '', '', '', 'Yes', 1, NULL, NULL);
+(2, 1, 6, 2, 0, 1, 'superadmin', 'Red Casual T-Shirt', 'RC001', 'Red', '1000', 20, '200', '', '', NULL, '', '', '', 'Yes', 1, NULL, NULL),
+(3, 1, 8, 1, 0, 1, 'superadmin', 'Arrow T-Shirts', 'AT01', 'Red', '1200', 10, '100', '94877.jfif', '61760.webm', 'This is a pure cotton t-shirt', 't-shirt', 'tshirts', 'cotton t-shirt', 'Yes', 1, '2023-05-22 17:03:38', '2023-05-22 18:07:46');
 
 -- --------------------------------------------------------
 
@@ -1014,7 +1016,7 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `countries`
@@ -1044,7 +1046,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `sections`
