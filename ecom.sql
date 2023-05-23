@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2023 at 09:08 PM
+-- Generation Time: May 23, 2023 at 10:40 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -690,7 +690,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (30, '2023_05_14_023205_create_categories_table', 1),
 (31, '2023_05_20_150721_create_brands_table', 2),
 (32, '2023_05_21_072301_create_products_table', 3),
-(33, '2023_05_21_073504_create_products_table', 4);
+(33, '2023_05_21_073504_create_products_table', 4),
+(34, '2023_05_22_200257_create_products_attributes_table', 5),
+(35, '2023_05_23_071517_create_products_images_table', 6);
 
 -- --------------------------------------------------------
 
@@ -763,6 +765,56 @@ INSERT INTO `products` (`id`, `section_id`, `category_id`, `brand_id`, `vendor_i
 (1, 2, 5, 7, 1, 2, 'vendor', 'Redmi Note 11', 'RN11', 'Blue', '15000', 10, '500', '', '', NULL, '', '', '', 'Yes', 1, NULL, NULL),
 (2, 1, 6, 2, 0, 1, 'superadmin', 'Red Casual T-Shirt', 'RC001', 'Red', '1000', 20, '200', '', '', NULL, '', '', '', 'Yes', 1, NULL, NULL),
 (3, 1, 8, 1, 0, 1, 'superadmin', 'Arrow T-Shirts', 'AT01', 'Red', '1200', 10, '100', '94877.jfif', '61760.webm', 'This is a pure cotton t-shirt', 't-shirt', 'tshirts', 'cotton t-shirt', 'Yes', 1, '2023-05-22 17:03:38', '2023-05-22 18:07:46');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products_attributes`
+--
+
+CREATE TABLE `products_attributes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `size` varchar(255) NOT NULL,
+  `price` double(8,2) NOT NULL,
+  `stock` int(11) NOT NULL,
+  `sku` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `products_attributes`
+--
+
+INSERT INTO `products_attributes` (`id`, `product_id`, `size`, `price`, `stock`, `sku`, `status`, `created_at`, `updated_at`) VALUES
+(1, 3, 'Small', 1100.00, 11, 'RC001-S', 1, '2023-05-23 03:07:45', '2023-05-23 05:59:21'),
+(2, 3, 'Medium', 1200.00, 12, 'RC001-M', 1, '2023-05-23 03:08:31', '2023-05-23 05:59:21'),
+(3, 3, 'Large', 1300.00, 13, 'RC001-L', 1, '2023-05-23 03:08:31', '2023-05-23 05:59:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products_images`
+--
+
+CREATE TABLE `products_images` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `products_images`
+--
+
+INSERT INTO `products_images` (`id`, `product_id`, `image`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, '20221219_094625.jpg8962.jpg', 1, '2023-05-23 07:15:29', '2023-05-23 07:22:52'),
+(2, 1, '20221219_094629.jpg99183.jpg', 1, '2023-05-23 07:15:30', '2023-05-23 07:29:32');
 
 -- --------------------------------------------------------
 
@@ -959,6 +1011,18 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `products_attributes`
+--
+ALTER TABLE `products_attributes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `products_images`
+--
+ALTER TABLE `products_images`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sections`
 --
 ALTER TABLE `sections`
@@ -1034,7 +1098,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1046,6 +1110,18 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `products_attributes`
+--
+ALTER TABLE `products_attributes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `products_images`
+--
+ALTER TABLE `products_images`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
