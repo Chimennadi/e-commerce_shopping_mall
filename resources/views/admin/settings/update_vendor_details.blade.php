@@ -316,7 +316,7 @@
                                 </div>
                                 <div class="form-group" style="margin-top: 20px">
                                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                    <button class="btn btn-light">Cancel</button>
+                                    <button type="reset" class="btn btn-light">Cancel</button>
                                 </div>
                             </form>
                         </div>

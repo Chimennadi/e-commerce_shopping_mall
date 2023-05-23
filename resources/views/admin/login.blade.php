@@ -29,7 +29,7 @@
                                 </div>
                                 <h4>Hello! let's get started</h4>
                                 <h6 class="font-weight-light">Sign in to continue.</h6>
-                                <!-- @client side validation -->
+                                <!-- client side validation -->
                                 @if(Session::has("error_message"))
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                     <strong>Error: </strong> {{ Session::get("error_message") }}
@@ -38,8 +38,8 @@
                                     </button>
                                 </div>
                                 @endif
-                                <!-- @end client side validation -->
-                                <!-- @server side validation -->
+                                <!-- end client side validation -->
+                                <!-- server side validation -->
                                 @if ($errors->any())
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                     @foreach ($errors->all() as $error)
@@ -50,7 +50,7 @@
                                     </button>
                                 </div>
                                 @endif
-                                <!-- @end server side validation -->
+                                <!--end server side validation -->
                                 <form class="pt-3" action="{{ url('admin/login') }}" method="post">@csrf
                                     <div class="form-group">
                                         <input type="email" name="email" id="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username" required="">
@@ -68,15 +68,6 @@
                                             Keep me signed in
                                             </label>
                                         </div>
-                                        <a href="#" class="auth-link text-black">Forgot password?</a>
-                                    </div>
-                                    <div class="mb-2">
-                                        <button type="button" class="btn btn-block btn-facebook auth-form-btn">
-                                        <i class="ti-facebook mr-2"></i>Connect using facebook
-                                        </button>
-                                    </div>
-                                    <div class="text-center mt-4 font-weight-light">
-                                        Don't have an account? <a href="register.html" class="text-primary">Create</a>
                                     </div>
                                 </form>
                             </div>

@@ -69,11 +69,13 @@
                 </div>
             </li>
             <li class="nav-item nav-profile dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                <img src="{{ asset('admin/images/faces/face28.jpg') }}" alt="profile"/>
+                <a class="nav-link dropdown-toggle" href="{{ url('admin/update-admin-details') }}" data-toggle="dropdown" id="profileDropdown">
+                    @if(!empty(Auth::guard('admin')->user()->image))
+                        <img src="{{ url('admin/images/photos/'.Auth::guard('admin')->user()->image) }}" alt="profile">
+                    @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item">
+                    <a href="{{ url('admin/update-admin-details') }}" class="dropdown-item">
                     <i class="ti-settings text-primary"></i>
                     Settings
                     </a>
