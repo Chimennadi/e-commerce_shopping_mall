@@ -101,8 +101,10 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ url('admin/add-edit-product/'.$product['id']) }}"><i style="font-size: 25px;" class="mdi mdi-pencil-box"></i></a>
-                                            <a class="confirmDelete" href="javascript:void(0)" module="product" moduleid="{{ $product['id']}}"><i style="font-size: 25px;" class="mdi mdi-file-excel-box"></i></a>
+                                            <a title="Edit Product" href="{{ url('admin/add-edit-product/'.$product['id']) }}"><i style="font-size: 25px;" class="mdi mdi-pencil-box"></i></a>
+                                            <a title="Add Attributes" href="{{ url('admin/add-edit-attributes/'.$product['id']) }}"><i style="font-size: 25px;" class="mdi mdi-plus-box"></i></a>
+                                            <a title="Add Multiple Images" href="{{ url('admin/add-images/'.$product['id']) }}"><i style="font-size: 25px;" class="mdi mdi-library-plus"></i></a>
+                                            <a href="javascript:void(0)" class="confirmDelete" module="product" moduleid="{{ $product['id']}}"><i style="font-size: 25px;" class="mdi mdi-file-excel-box"></i></a>
                                             {{-- <a title="product" class="confirmDelete" href="{{ url('admin/delete-product/'.$product['id']) }}"><i style="font-size: 25px;" class="mdi mdi-file-excel-box"></i></a> --}}
                                         </td>
                                     </tr>
