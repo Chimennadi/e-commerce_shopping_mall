@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2023 at 10:40 AM
+-- Generation Time: May 24, 2023 at 09:32 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -46,7 +46,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `type`, `vendor_id`, `mobile`, `email`, `password`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'superadmin', 0, '+2347032281281', 'admin@admin.com', '$2a$12$9r8Uw1J7H4JD0qxV8aprAO1nsJCzNu3oqgx9qXr2WpXDZdlEMfKeq', '', 1, NULL, NULL),
+(1, 'Admin', 'superadmin', 0, '+2347032281281', 'admin@admin.com', '$2a$12$9r8Uw1J7H4JD0qxV8aprAO1nsJCzNu3oqgx9qXr2WpXDZdlEMfKeq', '1861.jpg', 1, NULL, '2023-05-23 10:20:55'),
 (2, 'Nnadi', 'vendor', 1, '+2347060869085', 'nnadi@admin.com', '$2a$12$9r8Uw1J7H4JD0qxV8aprAO1nsJCzNu3oqgx9qXr2WpXDZdlEMfKeq', '', 1, NULL, '2023-05-20 13:06:27');
 
 -- --------------------------------------------------------
@@ -316,6 +316,35 @@ INSERT INTO `apps_countries` (`id`, `country_code`, `country_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `banners`
+--
+
+CREATE TABLE `banners` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `alt` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `banners`
+--
+
+INSERT INTO `banners` (`id`, `image`, `type`, `link`, `title`, `alt`, `status`, `created_at`, `updated_at`) VALUES
+(1, '35171.png', 'Slider', 'tops', 'tops', 'Tops', 1, '2023-05-24 05:19:40', '2023-05-24 06:01:02'),
+(2, '21678.png', 'Slider', 'tops', 'tops', 'tops', 1, '2023-05-24 05:34:50', '2023-05-24 06:08:50'),
+(3, '63533.png', 'Slider', 'no-banner', 'No-banner', 'no-banner', 1, '2023-05-24 05:39:05', '2023-05-24 06:24:47'),
+(4, '52098.png', 'Fix', 'test', 'test', 'test', 1, '2023-05-24 06:11:15', '2023-05-24 06:11:15'),
+(5, '53123.png', 'Fix', 'fix', 'fix', 'fix', 1, '2023-05-24 06:30:20', '2023-05-24 06:30:20');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `brands`
 --
 
@@ -369,15 +398,16 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `parent_id`, `section_id`, `category_name`, `category_image`, `category_discount`, `description`, `url`, `meta_title`, `meta_description`, `meta_keywords`, `status`, `created_at`, `updated_at`) VALUES
-(2, 0, 1, 'Women', '', 0.00, '', 'women', '', '', '', 1, NULL, NULL),
-(3, 0, 1, 'Kids', '', 0.00, '', 'kids', '', '', '', 1, NULL, NULL),
-(5, 0, 2, 'Mobiles', '', 10.00, 'This is a mobile category', 'mobiles', 'mobiles', 'mobiles', 'mobiles', 1, '2023-05-19 16:37:06', '2023-05-19 16:37:06'),
-(6, 0, 3, 'Cooking gas', '', 5.00, 'This is a kitchen appliances', 'Kitchen', 'kitchen', 'kitchen', 'kitchen', 1, '2023-05-19 16:39:49', '2023-05-19 16:39:49'),
-(7, 5, 2, 'Smartphones', '', 10.00, NULL, 'smartphones', 'smartphones', 'smartphones', 'smartphones', 1, '2023-05-20 12:19:58', '2023-05-20 13:58:16'),
-(8, 11, 1, 'T-Shirts', '', 0.00, NULL, 'tshirts', 'tshirts', 'tshirts', 'tshirts', 1, '2023-05-20 12:48:00', '2023-05-22 10:30:28'),
-(9, 1, 1, 'Shirts', '', 0.00, NULL, 'shirts', 'shirts', 'shirts', 'shirts', 1, '2023-05-20 13:01:56', '2023-05-20 13:07:53'),
-(10, 2, 1, 'Denims', '', 0.00, NULL, 'denims', NULL, NULL, NULL, 1, '2023-05-20 13:12:56', '2023-05-20 13:15:11'),
-(11, 0, 1, 'Men', '', 0.00, NULL, 'men', NULL, NULL, NULL, 1, '2023-05-22 09:46:31', '2023-05-22 09:46:31');
+(2, 0, 1, 'Men', '', 0.00, NULL, 'men', NULL, NULL, NULL, 1, NULL, '2023-05-23 20:15:53'),
+(3, 0, 1, 'Women', '', 0.00, NULL, 'women', NULL, NULL, NULL, 1, NULL, '2023-05-23 20:15:40'),
+(7, 0, 2, 'Mobiles', '', 10.00, NULL, 'smartphones', 'smartphones', 'smartphones', 'smartphones', 1, '2023-05-20 12:19:58', '2023-05-23 20:12:17'),
+(10, 3, 1, 'Denims', '', 0.00, NULL, 'denims', NULL, NULL, NULL, 1, '2023-05-20 13:12:56', '2023-05-23 20:16:12'),
+(13, 0, 1, 'Kids', '', 0.00, NULL, 'kids', NULL, NULL, NULL, 1, '2023-05-23 20:16:41', '2023-05-23 20:16:41'),
+(14, 2, 1, 'T-Shirts', '', 0.00, NULL, 'tshirts', NULL, NULL, NULL, 1, '2023-05-23 20:21:39', '2023-05-23 20:21:39'),
+(15, 7, 2, 'Smartphones', '', 0.00, NULL, 'smartphones', NULL, NULL, NULL, 1, '2023-05-23 20:22:09', '2023-05-23 20:22:09'),
+(16, 0, 3, 'Refrigerator', '', 0.00, NULL, 'refrigerator', NULL, NULL, NULL, 1, '2023-05-23 20:30:24', '2023-05-23 20:31:31'),
+(17, 3, 1, 'Tops', '', 0.00, NULL, 'tops', NULL, NULL, NULL, 1, '2023-05-23 20:34:29', '2023-05-23 20:34:29'),
+(19, 13, 1, 'shirts', '', 0.00, NULL, 'shirts', NULL, NULL, NULL, 1, '2023-05-23 20:37:16', '2023-05-23 20:37:16');
 
 -- --------------------------------------------------------
 
@@ -692,7 +722,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (32, '2023_05_21_072301_create_products_table', 3),
 (33, '2023_05_21_073504_create_products_table', 4),
 (34, '2023_05_22_200257_create_products_attributes_table', 5),
-(35, '2023_05_23_071517_create_products_images_table', 6);
+(35, '2023_05_23_071517_create_products_images_table', 6),
+(36, '2023_05_23_214235_create_banners_table', 7),
+(37, '2023_05_24_064811_update_banners_table', 8);
 
 -- --------------------------------------------------------
 
@@ -836,8 +868,8 @@ CREATE TABLE `sections` (
 
 INSERT INTO `sections` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Clothing', 1, NULL, NULL),
-(2, 'Electronics', 1, NULL, NULL),
-(3, 'Appliances', 1, NULL, NULL);
+(2, 'Electronics', 1, NULL, '2023-05-23 19:50:44'),
+(3, 'Appliances', 1, NULL, '2023-05-23 19:59:41');
 
 -- --------------------------------------------------------
 
@@ -960,6 +992,12 @@ ALTER TABLE `apps_countries`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `banners`
+--
+ALTER TABLE `banners`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `brands`
 --
 ALTER TABLE `brands`
@@ -1071,6 +1109,12 @@ ALTER TABLE `apps_countries`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
 
 --
+-- AUTO_INCREMENT for table `banners`
+--
+ALTER TABLE `banners`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
@@ -1080,7 +1124,7 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `countries`
@@ -1098,7 +1142,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
